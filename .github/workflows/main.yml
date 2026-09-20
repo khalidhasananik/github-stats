@@ -54,7 +54,7 @@ jobs:
       run: |
         for f in overview.svg languages.svg; do
           if [ -f "$f" ]; then
-            sed -i -E 's@(<svg[^>]*width="([0-9]+)"[^>]*height="([0-9]+)")@\1 viewBox="0 0 \2 \3"@' "$f"
+            sed -i -E 's@(<svg id="gh-[a-z-]+-mode-only"[^>]*width="([0-9]+)"[^>]*height="([0-9]+)")@\1 viewBox="0 0 \2 \3"@' "$f"
           fi
         done
 
