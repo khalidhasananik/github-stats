@@ -50,6 +50,14 @@ jobs:
         # https://github.com/orgs/community/discussions/192970
         MAX_RETRIES: 5
 
+    - name: Add viewBox for correct mobile scaling
+      run: |
+        for f in overview.svg languages.svg; do
+          if [ -f "$f" ]; then
+            sed -i -E 's@(<svg[^>]*width="([0-9]+)"[^>]*height="([0-9]+)")@\1 viewBox="0 0 \2 \3"@' "$f"
+          fi
+        done
+
     - name: Commit to the repo
       run: |
         git add .
